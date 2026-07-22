@@ -1,16 +1,19 @@
 import express from "express";
 import dotenv from "dotenv";
-import connectDB from "./config/db.js";
+import connectDB from "./src/config/db.js";
 
 dotenv.config();
+console.log(process.env.MONGO_URI);
+connectDB();
 
 const app = express();
 
-// Database connect
-connectDB();
+const PORT = 3000;
 
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is started at port ${PORT}`);
 });
+
+// for middlawe
+
+app.use(express.json());
